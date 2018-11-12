@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const Product = mongoose.model('Product');
-const repository = require('../repositories/product-repository')
+const repository = require('../repositories/product.repository')
 
 exports.post = async (req, res, next) => {
 
