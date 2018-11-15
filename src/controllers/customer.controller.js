@@ -52,7 +52,7 @@ exports.authenticate = async (req, res, next) => {
             });
 
         const token = await authService.generateToken(
-            { 
+            {   id: custumer.id,
                 email: custumer.email,
                 name: custumer.name 
             });

@@ -2,13 +2,17 @@
 
 const repository = require('../repositories/order.repository');
 const guid = require('guid');
+const authService = require('../services/auth.service');
 
 
 exports.post = async (req, res, next) => {
     try {
+        const token = req.body.token || req.query.token || req.headers['x-access-token'];
+        const data = await authService.decodeToken(token);
+        console.log(data);
         await repository
             .post({
-                customer: req.body.customer,
+                customer: data.id,
                 number: guid.raw().substring(0,6),
                 items: req.body.items
             });
@@ -23,6 +27,7 @@ exports.post = async (req, res, next) => {
         });
     }
 }
+
 exports.get = async (req, res, next) => {
     try {
         let data = await repository.get();
