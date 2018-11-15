@@ -40,9 +40,6 @@ exports.get = async (req, res, next) => {
     }
 }
 
-
-
-
 exports.authenticate = async (req, res, next) => {
     try {
         const custumer = await repository
