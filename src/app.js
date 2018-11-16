@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/', index);
-app.use('/produtos', produto);
+app.use('/products', produto);
 app.use('/customers', customer);
 app.use('/orders', order);
 
