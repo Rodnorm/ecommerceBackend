@@ -42,19 +42,19 @@ exports.get = async (req, res, next) => {
 
 exports.authenticate = async (req, res, next) => {
     try {
-        const custumer = await repository
-            .authenticate({
+        const customer = await repository
+            .authenticate({ 
                 email: req.body.email,
                 password: md5(req.body.password + global.SALT_KEY)
             });
 
         const token = await authService.generateToken(
-            {   id: custumer.id,
-                email: custumer.email,
-                name: custumer.name 
+            {   id: customer.id,
+                email: customer.email,
+                name: customer.name 
             });
 
-            if (!custumer) {
+            if (!customer) {
                 res.status(404).send({
                     message: 'Usuário ou senha inválidos'
                 });
@@ -65,8 +65,8 @@ exports.authenticate = async (req, res, next) => {
             message: 'Autenticação bem sucedida',
             token: token,
             data: {
-                email: custumer.email,
-                name: custumer.name
+                email: customer.email,
+                name: customer.name
             }
         });
     } catch (e) {

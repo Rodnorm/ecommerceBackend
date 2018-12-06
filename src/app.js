@@ -30,7 +30,7 @@ app.use((req, res, next) => {
     res.header('Acces-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     next();
 });
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', index);
 app.use('/products', produto);
 app.use('/customers', customer);
