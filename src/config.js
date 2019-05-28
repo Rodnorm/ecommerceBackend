@@ -7,5 +7,3 @@ module.exports = {
     sendgridKey: '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',
     containerConnectionSring: 'TBD'
 }
-
-// pass = D7slbF5FF
